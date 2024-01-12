@@ -3,8 +3,8 @@ import { Link } from "@/app/types/Link"
 import { NextRequest, NextResponse } from "next/server"
 export async function POST(request: NextRequest, response: NextResponse) {
   try {
-    const { id, largeLink } = (await request.json()) as Link
-    if (id == "" || largeLink == "") {
+    const { id, largeLink, idUsuario } = (await request.json()) as Link
+    if (id == "" || largeLink == "" || idUsuario == "") {
       let error_response = {
         status: "fail",
         message: "Values empty for save shortLink"
@@ -33,10 +33,10 @@ export async function POST(request: NextRequest, response: NextResponse) {
       }
       await (
         await connection
-      ).execute(`INSERT INTO links (idlink,large_link) VALUES(?,?)`, [
-        id,
-        largeLink
-      ])
+      ).execute(
+        `INSERT INTO links (idlink,large_link,idUsuario) VALUES(?,?,?)`,
+        [id, largeLink, idUsuario]
+      )
 
       return new NextResponse(
         JSON.stringify({
