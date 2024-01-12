@@ -5,7 +5,16 @@ export async function GET(request: NextRequest, response: NextResponse) {
   try {
     const queryParams = request.nextUrl.searchParams
     const id = queryParams.get("id")
-
+    if (id == "") {
+      let error_response = {
+        status: "fail",
+        message: "Values empty for save shortLink"
+      }
+      return new NextResponse(JSON.stringify(error_response), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      })
+    }
     try {
       const [results] = await (
         await connection
