@@ -90,7 +90,10 @@ export async function GET(request: NextRequest, response: NextResponse) {
     try {
       const [results] = await (
         await connection
-      ).query(`SELECT * FROM links WHERE idusuario = ?`, [id])
+      ).query(
+        `SELECT * FROM links WHERE idusuario = ?  ORDER BY fecha_creacion DESC`,
+        [id]
+      )
       const resultsArr = results as Array<Object>
       if (resultsArr.length == 0) {
         return new NextResponse(
