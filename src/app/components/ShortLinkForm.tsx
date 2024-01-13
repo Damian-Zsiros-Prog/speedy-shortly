@@ -21,6 +21,7 @@ export default function ShortLinkForm() {
 
         if (response.ok) {
           setLinkLarge(`${window.location.origin}/${id}`)
+          window.location.reload()
         }
       } catch (err) {
         console.error(err)
