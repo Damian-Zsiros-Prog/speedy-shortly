@@ -9,15 +9,18 @@ export default function ShortLinkForm() {
     if (linkLarge != "" && expresionRegularURL.test(linkLarge)) {
       try {
         const id = generarUUID()
-        const response = await fetch("/api/short-link", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            id,
-            largeLink: linkLarge,
-            idUsuario: window.localStorage.getItem("uuid")
-          })
-        })
+        const response = await fetch(
+          "${request.nextUrl.origin}/api/short-link",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              id,
+              largeLink: linkLarge,
+              idUsuario: window.localStorage.getItem("uuid")
+            })
+          }
+        )
 
         if (response.ok) {
           setLinkLarge(`${window.location.origin}/${id}`)
