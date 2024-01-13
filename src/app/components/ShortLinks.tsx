@@ -43,7 +43,7 @@ export default function ShortLinks() {
         {shortLinks.map((shortLink) => (
           <article
             key={shortLink.idlink}
-            className="p-4 border-2  m-auto rounded flex justify-between"
+            className="p-4 border-2  m-auto rounded flex justify-between w-[80%]"
           >
             <div className="flex flex-col gap-3  text-left">
               <a
