@@ -34,11 +34,11 @@ export default function ShortLinks() {
           className="p-4 border-2 max-w-[60%] m-auto rounded flex flex-col gap-3  text-left"
         >
           <a
-            href={`${window.location.origin}/${shortLink.idlink}`}
+            href={`${window.location.origin}/short-link/${shortLink.idlink}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-800"
-          >{`${window.location.origin}/${shortLink.idlink}`}</a>
+          >{`${window.location.origin}/short-link/${shortLink.idlink}`}</a>
           <a
             href={`${shortLink.large_link}`}
             target="_blank"
