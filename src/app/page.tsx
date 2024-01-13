@@ -13,6 +13,17 @@ export default function Home() {
           <div className="flex flex-col gap-3">
             <h1 className="text-white text-5xl text-center">Speedy Shortly</h1>
             <ShortLinkForm />
+            <span className="text-center text-white">
+              Hecho por{" "}
+              <a
+                href="https://github.com/Damian-Zsiros-Prog"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-gray-100 hover:underline transition"
+              >
+                Damian Zsiros
+              </a>
+            </span>
           </div>
         </section>
       </header>
