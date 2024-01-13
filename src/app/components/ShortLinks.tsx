@@ -27,11 +27,11 @@ export default function ShortLinks() {
   }, [])
 
   return (
-    <section className="flex justify-center flex-col gap-4">
+    <section className="flex justify-center flex-col gap-4 w-full">
       {shortLinks.map((shortLink) => (
         <article
           key={shortLink.idlink}
-          className="p-4 border-2 max-w-[60%] m-auto rounded flex flex-col gap-3  text-left"
+          className="p-4 border-2  m-auto rounded flex flex-col gap-3  text-left"
         >
           <a
             href={`${window.location.origin}/short-link/${shortLink.idlink}`}
