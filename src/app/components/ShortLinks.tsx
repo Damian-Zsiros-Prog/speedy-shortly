@@ -7,9 +7,7 @@ export default function ShortLinks() {
   const getShortLinks = async () => {
     try {
       const response = await fetch(
-        `${
-          request.nextUrl.origin
-        }/api/short-link?idUsuario=${window.localStorage.getItem("uuid")}`,
+        `/api/short-link?idUsuario=${window.localStorage.getItem("uuid")}`,
         {
           method: "GET",
           headers: {}
