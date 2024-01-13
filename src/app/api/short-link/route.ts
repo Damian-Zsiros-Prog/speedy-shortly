@@ -74,8 +74,62 @@ export async function POST(request: NextRequest, response: NextResponse) {
 }
 
 export async function GET(request: NextRequest, response: NextResponse) {
+  const searchParams = request.nextUrl.searchParams
+  if (searchParams.get("idUsuario")) {
+    const id = searchParams.get("idUsuario")
+    if (id == "") {
+      let error_response = {
+        status: "fail",
+        message: "Values empty for save shortLink"
+      }
+      return new NextResponse(JSON.stringify(error_response), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      })
+    }
+    try {
+      const [results] = await (
+        await connection
+      ).query(`SELECT * FROM links WHERE idusuario = ?`, [id])
+      const resultsArr = results as Array<Object>
+      if (resultsArr.length == 0) {
+        return new NextResponse(
+          JSON.stringify({
+            status: "fail",
+            message: "Short link with id of user not exists"
+          }),
+          {
+            status: 400,
+            headers: { "Content-Type": "application/json" }
+          }
+        )
+      }
+
+      return new NextResponse(
+        JSON.stringify({
+          status: "success",
+          shortLinks: resultsArr
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" }
+        }
+      )
+    } catch (err) {
+      console.log(err)
+      return new NextResponse(
+        JSON.stringify({
+          status: "error",
+          message: err
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" }
+        }
+      )
+    }
+  }
   try {
-    const searchParams = request.nextUrl.searchParams
     const id = searchParams.get("id")
     if (id == "") {
       let error_response = {
