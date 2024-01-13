@@ -21,7 +21,6 @@ export default function ShortLinkForm() {
 
         if (response.ok) {
           const result = await response.json()
-          console.log(result)
           setLinkLarge(`${window.location.origin}/${id}`)
         }
       } catch (err) {

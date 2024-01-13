@@ -1,5 +1,4 @@
 import { connection } from "@/app/db/connection"
-import { Link } from "@/app/types/Link"
 import { NextRequest, NextResponse } from "next/server"
 export async function GET(request: NextRequest, response: NextResponse) {
   try {

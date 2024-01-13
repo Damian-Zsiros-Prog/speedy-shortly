@@ -18,7 +18,6 @@ export default function ShortLinks() {
 
       if (response.ok) {
         const { shortLinks } = await response.json()
-        console.log(shortLinks)
         setShortLinks(shortLinks)
       }
     } catch (err) {
