@@ -29,9 +29,9 @@ export default function Home() {
         </section>
       </header>
       <main className="w-full flex flex-col justify-center text-center my-6 px-12 gap-8">
-        <section className="w-full">
+        <section className="w-full justify-center ">
           <main className="flex justify-center flex-col md:flex-row w-full">
-            <div className="flex-col ">
+            <div className="flex-col min-w-[70%]">
               <h2 className="text-4xl font-bold mb-4">Short Links</h2>
               <ShortLinks />
             </div>
