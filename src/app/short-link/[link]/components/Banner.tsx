@@ -6,8 +6,8 @@ export default function Banner(): JSX.Element {
   const atOptions = {
     key: "aab3816ace1c7e0e87c7b99ba1119039",
     format: "iframe",
-    height: 50,
-    width: 320,
+    height: 600,
+    width: 160,
     params: {}
   }
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Banner(): JSX.Element {
       const conf = document.createElement("script")
       const script = document.createElement("script")
       script.type = "text/javascript"
-      script.src = `//www.highperformancedformats.com/${atOptions.key}/invoke.js`
+      script.src = `www.highperformancedformats.com/${atOptions.key}/invoke.js`
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`
 
       banner.current.append(conf)
