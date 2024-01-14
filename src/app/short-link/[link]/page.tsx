@@ -37,7 +37,7 @@ export default function ShortLinkRedirect() {
   return (
     <>
       <head>
-        <title>{Title}</title>
+        <title>{Title || window.location.pathname} - Speedy Shortly</title>
       </head>
       <div className="w-ful h-screen grid place-items-center">
         <h1 className="text-4xl font-bold">
