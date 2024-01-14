@@ -1,13 +1,12 @@
 "use client"
 
-import Script from "next/script"
 import { useEffect, useState } from "react"
-import Banner from "./components/Banner"
+import Page from "./page.client"
+import { useRouter } from "next/navigation"
 
 export default function ShortLinkRedirect() {
-  const [Title, setTitle] = useState("")
-  const [LinkExterno, setLinkExterno] = useState("")
   const router = window?.location
+  const routerUser = useRouter()
   const redirectShortLink = async () => {
     const link = router.pathname.split("/").pop()
     try {
@@ -23,39 +22,19 @@ export default function ShortLinkRedirect() {
         const result = await response.json()
         const { shortLinkInfo } = result
         const { large_link: largeLink } = shortLinkInfo
-        setTitle(new URL(largeLink).pathname)
-        setLinkExterno(largeLink)
+        return {
+          link: largeLink as string,
+          title: new URL(largeLink).pathname
+        }
       }
     } catch (err) {
       console.error(err)
     }
   }
-  useEffect(() => {
-    redirectShortLink()
-  }, [])
 
   return (
     <>
-      <head>
-        <title>
-          {Title != "" ? Title : window.location.pathname} - Speedy Shortly
-        </title>
-      </head>
-
-      <section className="w-ful h-screen grid place-items-center">
-        <div className="text-center flex flex-col gap-3">
-          <Banner />
-          <h1 className="text-4xl font-bold">
-            Redireccionando a el link. Dale click al link...
-          </h1>
-          <a
-            href={LinkExterno}
-            className="p-3 bg-blue-600 hover:bg-blue-700 transition text-white rounded"
-          >
-            Ir al link
-          </a>
-        </div>
-      </section>
+      <Page info={redirectShortLink} />
     </>
   )
 }
