@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef } from "react"
 export default function Banner(): JSX.Element {
-  const banner = useRef<HTMLDivElement>()
+  const banner = useRef<HTMLDivElement>(null)
 
   const atOptions = {
     key: "aab3816ace1c7e0e87c7b99ba1119039",
