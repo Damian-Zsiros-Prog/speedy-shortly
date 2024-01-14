@@ -19,7 +19,10 @@ export const metadata: Metadata = {
       }
     ]
   },
-  keywords: ["shortlink", "speedy shortly", "shortly", "link"]
+  keywords: ["shortlink", "speedy shortly", "shortly", "link"],
+  authors: [{ name: "Damian Zsiros", url: "https://www.damianzsiros.com/" }],
+  creator: "Damian Zsiros",
+  publisher: "Damian Zsiros"
 }
 
 export default function RootLayout({
