@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import Banner from "./components/Banner"
 import { useRouter } from "next/navigation"
 interface Props {
-  info: () => Promise<Info>
+  info?: any
 }
 interface Info {
   link?: string
@@ -12,11 +12,13 @@ interface Info {
 export default function Page({ info }: Props) {
   const [Info, setInfo] = useState<Info>({})
   const getInfo = async () => {
-    info().then((data) => {
-      setInfo(data)
+    if (info) {
+      info().then((data: Info) => {
+        setInfo(data)
 
-      window.location.href = data.link ?? ""
-    })
+        window.location.href = data.link ?? ""
+      })
+    }
   }
   useEffect(() => {
     getInfo()
