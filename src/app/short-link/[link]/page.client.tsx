@@ -14,6 +14,8 @@ export default function Page({ info }: Props) {
   const getInfo = async () => {
     info().then((data) => {
       setInfo(data)
+
+      window.location.href = data.link ?? ""
     })
   }
   useEffect(() => {

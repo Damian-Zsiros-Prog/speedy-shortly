@@ -22,7 +22,6 @@ export default function ShortLinkRedirect() {
         const result = await response.json()
         const { shortLinkInfo } = result
         const { large_link: largeLink } = shortLinkInfo
-        window.location.href = largeLink
         return {
           link: largeLink as string,
           title: new URL(largeLink).pathname
